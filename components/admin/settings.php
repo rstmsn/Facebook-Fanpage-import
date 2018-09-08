@@ -77,6 +77,9 @@ class FacebookFanpageImportAdminSettings {
 	 */
 	public function register_settings() {
 		register_setting( 'fbfpi_options', 'fbfpi_fanpage_id' );
+		register_setting( 'fbfpi_options', 'fbfpi_fanpage_appid' );
+		register_setting( 'fbfpi_options', 'fbfpi_fanpage_appsecret' );
+		register_setting( 'fbfpi_options', 'fbfpi_fanpage_id' );
 		register_setting( 'fbfpi_options', 'fbfpi_fanpage_stream_language' );
 		register_setting( 'fbfpi_options', 'fbfpi_import_interval' );
 		register_setting( 'fbfpi_options', 'fbfpi_import_num' );
@@ -100,12 +103,22 @@ class FacebookFanpageImportAdminSettings {
 		echo '<div id="icon-options-general" class="icon32 icon32-posts-post"></div>';
 		echo '<h2>' . __( 'Facebook Fanpage Import', 'facebook-fanpage-import' ) . '</h2>';
 
+		echo '<div><p>To import recent posts from a Facebook Page, you must:';
+		echo '<ul class="instructions">';
+		echo '<li>Be an administrator or editor of that Facebook Page.</li>';
+		echo '<li>Create an App, from the same Facebook Account, using the <a href="https://developers.facebook.com/apps/">Facebook Developer Center</a>.</li>';
+		echo '<li>Keep your App in "development" mode.</li>';
+		echo '</ul>';
+		echo '</p></div>';
+
 		echo '<div class="fbfpi-form">';
 		echo '<form method="post" action="options.php">';
 		settings_fields( 'fbfpi_options' );
 		do_settings_sections( 'fbfpi_options' );
 
 		$fanpage_id              = get_option( 'fbfpi_fanpage_id' );
+		$fanpage_appid           = get_option( 'fbfpi_fanpage_appid' );
+		$fanpage_appsecret       = get_option( 'fbfpi_fanpage_appsecret' );
 		$fanpage_stream_language = get_option( 'fbfpi_fanpage_stream_language' );
 		$import_interval         = get_option( 'fbfpi_import_interval' );
 		$import_num              = get_option( 'fbfpi_import_num' );
@@ -129,7 +142,27 @@ class FacebookFanpageImportAdminSettings {
 		echo '<div class="fbfpi-form-field">';
 		echo '<label for="fbfpi_fanpage_id">' . __( 'Page ID', 'facebook-fanpage-import' ) . '</label>';
 		echo '<div class="input">';
-		echo '<input type="text" name="fbfpi_fanpage_id" id="fbfpi_fanpage_id" value="' . $fanpage_id . '" /><br /><small>' . __( 'Copy the fanpage ID from your Facebook fanpage info page.', 'facebook-fanpage-import' ) . '</small>';
+		echo '<input type="text" name="fbfpi_fanpage_id" id="fbfpi_fanpage_id" value="' . $fanpage_id . '" /><br /><small>' . __( 'Copy the <a href="https://findmyfbid.com/">Page ID</a> from your Facebook page.', 'facebook-fanpage-import' ) . '</small>';
+		echo '</div>';
+		echo '</div>';
+
+		/**
+		 * Facebook App ID
+		 */
+		echo '<div class="fbfpi-form-field">';
+		echo '<label for="fbfpi_fanpage_appid">' . __( 'App ID', 'facebook-fanpage-import' ) . '</label>';
+		echo '<div class="input">';
+		echo '<input type="text" name="fbfpi_fanpage_appid" id="fbfpi_fanpage_appid" value="' . $fanpage_appid . '" /><br /><small>' . __( 'Copy the <strong>App ID &amp; App Secret</strong> from your <a href="https://developers.facebook.com/apps/">Facebook Developer App Info</a> page.', 'facebook-fanpage-import' ) . '</small>';
+		echo '</div>';
+		echo '</div>';
+
+		/**
+		 * Facebook App Secret
+		 */
+		echo '<div class="fbfpi-form-field">';
+		echo '<label for="fbfpi_fanpage_appsecret">' . __( 'App Secret', 'facebook-fanpage-import' ) . '</label>';
+		echo '<div class="input">';
+		echo '<input type="text" name="fbfpi_fanpage_appsecret" id="fbfpi_fanpage_appsecret" value="' . $fanpage_appsecret . '" />';
 		echo '</div>';
 		echo '</div>';
 

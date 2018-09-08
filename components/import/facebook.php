@@ -55,8 +55,10 @@ class FacebookFanpageConnect {
 	 *
 	 * @since 1.0.0
 	 */
-	function __construct( $page_id, $access_token = '', $locale = 'en_EN' ) {
-		$this->access_token = '1412978082344911|a7f5722a2b02f24aad0cda61ae5c4fe9';
+	function __construct( $page_id, $app_id, $app_secret, $locale = 'en_EN' ) {
+		#$this->access_token = '1412978082344911|a7f5722a2b02f24aad0cda61ae5c4fe9';
+
+		$this->access_token = $this->create_access_token( $app_id, $app_secret);
 		$this->graph_url    = 'https://graph.facebook.com/v2.7/';
 		$this->locale       = $locale;
 
@@ -177,6 +179,10 @@ class FacebookFanpageConnect {
 
 		$data = $this->fetch_data( $url );
 		$data = json_decode( $data );
+
+		echo $url . "<br />";
+
+		exit();
 
 		if ( property_exists( $data, 'paging' ) ) {
 			$this->paging = $data->paging;

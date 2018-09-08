@@ -8,9 +8,16 @@
  
 namespace skip\v1_0_0;
  
-class Color extends Textfield{		/**	 * Constructor	 * @package Skip	 * @since 1.0	 * @param string $name Name of Color field.
+class Color extends Textfield{
+	
+	/**
+	 * Constructor
+	 * @package Skip
+	 * @since 1.0
+	 * @param string $name Name of Color field.
 	 * @param array/string $args List of Arguments.
-	 */	function __construct( $name, $label = FALSE, $args = array() ){
+	 */
+	function __construct( $name, $label = FALSE, $args = array() ){
 		/*
 		 * Additional parent args:
 		 * 'id'
@@ -40,7 +47,8 @@ class Color extends Textfield{		/**	 * Constructor	 * @package Skip	 * @sin
 		';
 		
 	  	return parent::render();
-	}}
+	}
+}
 /**
  * Color field getter Function
  * @see skip_color()
@@ -102,5 +110,7 @@ function get_color( $name, $label = FALSE, $args = array() ){
  * @since 1.0
  * @param string $name Name of Color field.
  * @param array/string $args List of Arguments.
- */function color( $name, $label = FALSE, $args = array() ){
-	echo get_color( $name, $label, $args );}
+ */
+function color( $name, $label = FALSE, $args = array() ){
+	echo get_color( $name, $label, $args );
+}

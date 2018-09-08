@@ -8,9 +8,15 @@
  
 namespace skip\v1_0_0;
 
-class Textarea extends Form_Element{		/**	 * Constructor	 * @since 1.0	 * @param string $name Name of field.
+class Textarea extends Form_Element{
+	
+	/**
+	 * Constructor
+	 * @since 1.0
+	 * @param string $name Name of field.
  	 * @param array/string $args List of Arguments.	 
-	 */	function __construct( $name, $label = FALSE, $args = array() ){
+	 */
+	function __construct( $name, $label = FALSE, $args = array() ){
 		$defaults = array(
 			'rows' => '',
 			'cols' => '',
@@ -21,7 +27,9 @@ class Textarea extends Form_Element{		/**	 * Constructor	 * @since 1.0	 * @
 		
 		$args = wp_parse_args( $args, $defaults );
 		$args[ 'label' ] = $label;
-		$args[ 'close_tag' ] = TRUE; // No Close tag for Input type Text				parent::__construct( 'textarea', $name, $args );
+		$args[ 'close_tag' ] = TRUE; // No Close tag for Input type Text
+		
+		parent::__construct( 'textarea', $name, $args );
 		
 		if( '' != $args[ 'rows' ] )
 			$this->add_param( 'rows', $args[ 'rows' ] );
@@ -33,7 +41,8 @@ class Textarea extends Form_Element{		/**	 * Constructor	 * @since 1.0	 * @
 			$this->add_element( $this->value );
 		
 		$this->del_param( 'value' ); // Not needed here
-	}}
+	}
+}
 /**
  * Textarea getter Function
  * @see skip_textarea()
@@ -96,4 +105,6 @@ function get_textarea( $name, $label = FALSE, $args = array() ){
  * @param string $name Name of Textarea field.
  * @param array/string $args List of Arguments.
  */
-function textarea( $name, $label = FALSE, $args = array() ){	echo get_textarea( $name, $label, $args );}
+function textarea( $name, $label = FALSE, $args = array() ){
+	echo get_textarea( $name, $label, $args );
+}

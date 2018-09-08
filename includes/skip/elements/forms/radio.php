@@ -8,10 +8,16 @@
  
 namespace skip\v1_0_0;
 
-class Radio extends Form_Element{		/**	 * Constructor	 * @since 1.0	 * @param string $name Name of field.
+class Radio extends Form_Element{
+	
+	/**
+	 * Constructor
+	 * @since 1.0
+	 * @param string $name Name of field.
 	 * @param string $value The value of the checkbox element which will be saved if Radiobutton is checked.
 	 * @param array/string $args List of Arguments.
-	 */	function __construct( $name, $value, $label = FALSE, $args = array() ){
+	 */
+	function __construct( $name, $value, $label = FALSE, $args = array() ){
 		/*
 		 * Additional parent args:
 		 * 'id'
@@ -36,7 +42,8 @@ class Radio extends Form_Element{		/**	 * Constructor	 * @since 1.0	 * @par
 		if( $value == $this->value || $this->value == 'checked' || $args[ 'checked' ] )
 			$this->add_param( 'checked', 'checked' );
 		
-	}}
+	}
+}
 /**
  * Radiobutton getter Function
  * @see skip_radio()
@@ -100,4 +107,6 @@ function get_radio( $name, $value, $label = FALSE, $args = array(), $return = 'h
  * @param string $value The value of the checkbox element which will be saved if Radiobutton is checked.
  * @param array/string $args List of Arguments.
  */
-function radio( $name, $value, $label = FALSE, $args = array() ){	echo get_radio( $name, $value, $label, $args );}
+function radio( $name, $value, $label = FALSE, $args = array() ){
+	echo get_radio( $name, $value, $label, $args );
+}

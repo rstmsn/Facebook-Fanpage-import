@@ -111,6 +111,8 @@ class FacebookFanpageImportFacebookStream {
 	 */
 	private function __construct() {
 		$this->page_id         = get_option( 'fbfpi_fanpage_id' );
+		$this->app_id          = get_option( 'fbfpi_fanpage_appid' );
+		$this->app_secret      = get_option( 'fbfpi_fanpage_appsecret' );
 		$this->stream_language = get_option( 'fbfpi_fanpage_stream_language' );
 		$this->update_interval = get_option( 'fbfpi_import_interval' );
 		$this->update_num      = get_option( 'fbfpi_import_num' );
@@ -121,7 +123,7 @@ class FacebookFanpageImportFacebookStream {
 		$this->author_id       = get_option( 'fbfpi_insert_user_id' );
 		$this->term_id         = get_option( 'fbfpi_insert_term_id' );
 
-		$this->fpc = new FacebookFanpageConnect( $this->page_id, '', get_locale() );
+		$this->fpc = new FacebookFanpageConnect( $this->page_id, $this->app_id, $this->app_secret, get_locale() );
 
 		if ( '' == $this->page_id ) {
 			FacebookFanpageImport::notice( sprintf( __( '<a href="%s">Fanpage ID have to be provided.</a>', 'facebook-fanpage-import' ), admin_url( 'tools.php?page=fanpage-import/components/admin/settings.php' ) ), 'error' );
