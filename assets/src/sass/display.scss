@@ -1,0 +1,68 @@
+/**
+ * This stylesheet is used to style the public view of the plugin.
+ *
+ * @since 1.0.0
+ */
+
+article {
+	.entry-content {
+		/* link wrapper */
+		.fbfpi_link {
+			border: 1px solid #ccc;
+
+			h4 {
+				margin: 0;
+
+				a {
+					text-decoration: none;
+				}
+			}
+
+			.fbfpi_image{
+				a {
+					img {
+						width:100%;
+					}
+				}
+			}
+		}
+
+		/* text wrapper */
+		.fbfpi_text {
+			padding: 10px;
+
+			h4 {
+				margin: 0;
+
+				a {
+					text-decoration: none;
+				}
+			}
+
+			p {
+				margin: 5px 0 0 0;
+			}
+		}
+
+		/* photo wrapper */
+		.fbfpi_photo {
+			background-color: #EFEFEF;
+			text-align: center;
+			border: 1px solid #ccc;
+
+			a {
+				display: block;
+				line-height: 0;
+
+				img {
+					width: 100%;
+				}
+			}
+		}
+
+		/* video wrapper */
+		.fbfpi_video {
+			border: 1px solid #ccc;
+		}
+	}
+}
